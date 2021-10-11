@@ -1,0 +1,90 @@
+using System;
+ 
+namespace Task4_2
+{
+    abstract class Figure {
+        public abstract double EvalSquare();
+        public abstract double EvalPerimeter();
+    }
+ 
+    class Triangle : Figure {
+        private double a, b, c;
+ 
+        public Triangle(double _a, double _b, double _c) {
+            a = _a;
+            b = _b;
+            c = _c;
+        }
+ 
+        public override double EvalSquare() {
+            double p = EvalPerimeter()/2;
+            return Math.Sqrt(p*(p-a)*(p-b)*(p-b));
+        }
+ 
+        public override double EvalPerimeter() {
+            return a + b + c;
+        }
+    }
+ 
+    class Cycle : Figure {
+        private double r;
+ 
+        public Cycle(double _r) {
+            r = _r;
+        }
+ 
+        public override double EvalSquare() {
+            return Math.PI*r*r;
+        }
+ 
+        public override double EvalPerimeter() {
+            return 2*Math.PI*r;
+        }
+    }
+ 
+    class Rectangle : Figure {
+        private double a, b;
+ 
+        public Rectangle(double _a, double _b) {
+            a = _a;
+            b = _b;
+        }
+ 
+        public override double EvalSquare() {
+            return a*b;
+        }
+ 
+        public override double EvalPerimeter() {
+            return 2*(a + b);
+        }
+    }
+ 
+    class Square : Rectangle {
+        public Square(double _a) : base(_a, _a) { }
+    }
+ 
+    class Rhomb : Figure {
+        private double a, angle;
+ 
+        public Rhomb(double _a, double _angle) {
+            a = _a;
+            angle = _angle;
+        }
+ 
+        public override double EvalSquare() {
+            return a*a*Math.Sin(angle);
+        }
+ 
+        public override double EvalPerimeter() {
+            return 4*a;
+        }
+    }
+ 
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
