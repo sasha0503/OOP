@@ -1,0 +1,37 @@
+using System;
+ 
+namespace Task4_3
+{
+    abstract class Triangle 
+    {
+        public abstract double EvalSquare();
+        public abstract double EvalPerimeter();
+    }
+ 
+    class RectangularTriangle : Triangle 
+    {
+        private double a, b, angle;
+ 
+        public override double EvalSquare() 
+        {
+            return 1/2*a*b*Math.Sin(angle);
+        }
+ 
+        public override double EvalPerimeter() 
+        {
+            return a + b + Math.Sqrt(a*a+b*b-2*a*b*Math.Cos(angle));
+        }
+    }
+ 
+    class IsoscelesTriangle : RectangularTriangle 
+    {
+    }
+ 
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
